@@ -191,4 +191,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     },
 # }
 DEBUG = False
-ALLOWED_HOSTS = ['whats-it.co.za', 'genuine-segment-444209-e4.ew.r.appspot.com']
+ALLOWED_HOSTS = ['https://blog-mr6x.onrender.com']
