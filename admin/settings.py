@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 # settings.py
 import os
-import dj-database-url
+
  
 # The base URL for accessing media files in templates
 
