@@ -1,0 +1,17 @@
+{% extends 'profiles/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'customcss/style.css' %}">
+{% endblock %}
+{% block content %}
+<div class="content1">
+<nav class="navbar">
+    <h1>Users</h1>
+</nav>
+{% for profile in profiles %}
+    <a href="{% url 'profiles:detail' profile.user.pk %}">{{ profile.user }}</a>
+    <hr>
+{% endfor %}
+</div>
+{% include 'includes/nav.html' %}
+{% endblock %}

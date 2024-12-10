@@ -1,0 +1,37 @@
+# Byte-compiled and optimized files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment directories
+venv/
+env/
+
+# Local environment files
+.env
+*.env
+
+# Django-specific files
+db.sqlite3
+media/
+static/
+
+# IDE and editor-specific files
+.idea/
+.vscode/
+*.swp
+*~
+
+# Node and frontend files (if applicable)
+node_modules/
+npm-debug.log
+yarn.lock
+
+# Docker-related files
+docker-compose.yml
+
+# Other unneeded files
+*.log
+*.bak
+*.tmp
+*.orig

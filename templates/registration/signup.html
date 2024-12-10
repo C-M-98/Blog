@@ -1,0 +1,30 @@
+{% extends "registration/base.html" %}
+{% load i18n static %}
+{% block content %}
+<form method="POST" action="{% url 'data:signup' %}">
+  {% csrf_token %}
+  <label for="id_username">Username:</label>
+  <input type="text" name="username" id="id_username" required>
+  <br>
+  <label for="id_password">Password:</label>
+  <input type="password" name="password" id="id_password" required>
+  <br>
+  <label for="id_password2">Re-enter Password:</label>
+  <input type="password" name="password2" id="id_password2" required>
+  <br>
+  <input type="submit" value="Sign Up">
+</form>
+
+<br>
+<a href="{% url 'data:login' %}"><button type="button">Login</button></a>
+
+
+  
+    <!-- <h2>Sign up</h2>
+    <form method="post" action="{% url 'data:login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}  <!-- Render form fields as paragraph elements -->
+      <!-- <button type="submit">Sign up</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'data:login' %}">Login here</a></p> --> -->
+  {% endblock %}

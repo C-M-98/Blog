@@ -1,0 +1,16 @@
+{% extends 'profiles/base.html' %}
+{% load static %}
+
+{% block content %}
+    {{ user.username }}
+    {{ user.email}}
+
+    <h1>Update Your Profile</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'profiles:profile' %}">
+        {% csrf_token %}
+        
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{% url 'profiles:profile' %}">Cancel</a>
+{% include 'includes/nav.html' %}
+{% endblock %}

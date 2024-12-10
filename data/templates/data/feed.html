@@ -1,0 +1,37 @@
+{% extends 'custom/base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="content1">
+    <nav class="navbar">
+        <h1>Make It Personal</h1>
+    </nav>
+    {% for post in posts %}
+    {% if post.image %}
+    <div class="container-fluid text-center p-0 feed-post shadow-lg" style=" background-image: linear-gradient(180deg, 
+rgba(0, 0, 0, 0.5) 0%, 
+rgba(0, 0, 0, 0.3) 100%),
+url('{{ post.image.url }}');
+background-repeat: no-repeat;
+background-size:cover;">
+        {% endif %}
+        <div class="feed-pro-container">
+            <a href="{% url 'profiles:detail' pk=post.pk %}">
+                {% if post.user.profile.image %}
+                <img src="{{ post.user.profile.image.url }}" class="rounded-circle feed-pro">
+                {% else %}
+                <div class="empty-placeholder feed-pro rounded-circle"></div>
+                {% endif %}
+            </a>
+        </div>
+    </div>
+    <p class="card-text border-0 ">{{post.caption}} ~ {{user.username}}</p>
+    {% endfor %}
+    
+</div>
+{% include 'includes/nav.html' %}
+{% endblock %}

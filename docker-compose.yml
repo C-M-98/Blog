@@ -1,0 +1,32 @@
+ # Specify the Compose file format version
+
+services:  # Define the services required
+  web:  # Service for the Django app
+    build: . 
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]    
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to 8000 in the container
+    volumes:
+      - .:/app  # Mount the current directory to /app inside the container
+    depends_on:
+      - db 
+    networks:
+      - app-network # Ensure the database service starts before the web service# Django settings module
+networks:
+  app-network:
+  
+  db:  # Service for the PostgreSQL database
+    image: postgre:13 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Use the official PostgreSQL image
+    environment:
+      POSTGRES_USER: myuser  # Database user
+      POSTGRES_PASSWORD: mypassword  # Database password
+      POSTGRES_DB: mydatabase # Database name
+    ports:
+      - "5432:5432" 
+
+volumes:
+  postgres_data:
+   
+   # Map PostgreSQL port 5432
