@@ -190,5 +190,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         },
 #     },
 # }
-DEBUG = False
-ALLOWED_HOSTS = ['https://blog-mr6x.onrender.com','*']
+DEBUG = True
+ALLOWED_HOSTS = ['https://blog-mr6x.onrender.com','localhost','127.0.0.1']
