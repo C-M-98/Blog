@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 # settings.py
 import os
+import dj_database_url
 
 # The base URL for accessing media files in templates
 
@@ -114,15 +115,17 @@ WSGI_APPLICATION = 'admin.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my-blog-database-instance',
-        'USER': 'christian',
-        'PASSWORD': 'N55rEobufIakkvVCuYwasWpIZBBjpsLK',
-        'HOST': 'postgresql://christian:N55rEobufIakkvVCuYwasWpIZBBjpsLK@dpg-ctc4doogph6c73abiplg-a.oregon-postgres.render.com/myblogdatabase_r03c',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'my database',
+#         'USER': 'christian',
+#         'PASSWORD': 'BBZTj0mZarFzQzZBbE5QHnFhkFtyBHdd',
+#         'HOST': 'postgresql://christian:BBZTj0mZarFzQzZBbE5QHnFhkFtyBHdd@dpg-ctc5radds78s73fl3is0-a/dynamo_j99p',
+#         'PORT': '5432',
+#     }
+# }
 
   # or wherever your login page is located
 # Password validation
