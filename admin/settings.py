@@ -45,7 +45,7 @@ MIDDLEWARE = [
 ] # Make sure it's placed correctly in the middleware stack
 
 # Directory where static files will be collected during 'collectstatic'  # Common choice, or use 'data.static'
-
+LOGIN_URL = '/accounts/login/'
 # Optionally, define the default cache timeout for static files
 WHITENOISE_MAX_AGE = 31536000  # One year (default for caching static files)
 
