@@ -122,7 +122,7 @@ DATABASES = {
             'NAME': 'dynamo_j99p',
             'USER': 'christian',
             'PASSWORD': 'BBZTj0mZarFzQzZBbE5QHnFhkFtyBHdd',
-            'HOST': 'dpg-ctc5radds78s73fl3is0-a',
+            'HOST': 'dpg-ctc5radds78s73fl3is0-a.oregon-postgres.render.com',
             'PORT': '5432',
         }
 }
