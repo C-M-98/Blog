@@ -4,3 +4,4 @@ gunicorn>=20.0
 sorl-thumbnail
 Pillow>=8.0.0
 whitenoise>=6.0.0
+dj-database-url

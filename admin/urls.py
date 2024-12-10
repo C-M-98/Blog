@@ -22,11 +22,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from profiles import urls as profiles_urls
 from data.views import CreatePost
+from data.views import HomeFeed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(data_urls)),
     path('', include(profiles_urls)),
     path('create_post/', CreatePost.as_view(), name="create_post"),
+    path('', views.HomeFeed.as_view(), name="home"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
