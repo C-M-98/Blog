@@ -48,7 +48,7 @@ class SignUp(FormView):
         
 class LoginView(FormView):
     template_name = 'registration/login.html'
-    success_url = '/home/'
+    success_url = '/'
     form_class = LoginForm 
     
     def form_valid(self, form):
