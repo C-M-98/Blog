@@ -254,10 +254,11 @@ outline:none;
     text-align:center;
 
   }
-  .sticky-nav {
+  .nav1{
     position: fixed;
-    bottom: 0;
-    left: 0;
+    /* bottom: 0;
+    left: 0; */
+    top:0;
     width: 100%;
     background-color: transparent;
     background: rgba(0, 0, 0, 1); 
@@ -265,11 +266,11 @@ outline:none;
     justify-content: space-around;
     padding: 10px 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-    z-index:1000;
+    /* z-index:1000; */
 
   }
   
-  .sticky-nav .nav-link {
+  .nav1 .nav-link {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
@@ -303,7 +304,8 @@ body {
     background-color: transparent;
     background: rgba(0, 0, 0, 0.3);   /* Dark background */
     height: 60px;      
-    position:sticky;       /* Set height for the navbar */
+    position:relative;
+    margin-top:63px;       /* Set height for the navbar */
 }
 
 .navbar h1 {

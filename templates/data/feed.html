@@ -7,7 +7,13 @@
 {% block content %}
 
 <div class="content1">
-    {% include 'includes/nav.html' %}
+    <!-- {% include 'includes/nav.html' %} -->
+    <div class="nav1">
+        <a href="{% url 'home' %}" class="nav-link">Feed</a>
+        <a href="{% url 'create_post' %}" class="nav-link">Post</a>
+        <a href="{% url 'profiles:profiles' %}" class="nav-link">Users</a>
+        <a href="{% url 'profiles:profile' %}" class="nav-link">Profile</a>
+      </div>
     <nav class="navbar">
         <h1>Make It Personal</h1>
     </nav>
