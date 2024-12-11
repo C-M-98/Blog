@@ -1,6 +1,8 @@
 {% extends 'profiles/base.html' %}
 {% load static %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'admin/style.css' %}">
+{% endblock %}
 {% block content %}
     <div class="content1">
         <div class="nav1">
