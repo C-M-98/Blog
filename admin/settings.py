@@ -48,6 +48,7 @@ MIDDLEWARE = [
 LOGIN_URL = '/accounts/login/'
 # Optionally, define the default cache timeout for static files
 WHITENOISE_MAX_AGE = 31536000  # One year (default for caching static files)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Optional: Specify a list of directories where static files can be found for your apps
 # (If you have app-specific static files, this is not always necessary.)
@@ -86,6 +87,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'admin.urls'
@@ -190,5 +192,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         },
 #     },
 # }
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['blog-mr6x.onrender.com','localhost','127.0.0.1']
