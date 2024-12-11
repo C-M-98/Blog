@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post', null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post', null=True, blank=True)
     name = models.CharField(max_length=100, default="")
     image = models.ImageField(blank=True, null=True)
     caption = models.CharField(max_length= 500, null=True, blank=True)
@@ -15,7 +15,7 @@ class Post(models.Model):
     
     
 class ProfileData(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile', null=True, blank=True)
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
