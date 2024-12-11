@@ -19,7 +19,7 @@ from django.contrib.auth.models import User
 class CreatePost(CreateView):
     form_class = PostForm
     template_name = 'data/create_post.html'
-    success_url = reverse_lazy('home')
+    success_url = '/home/'
     
     def form_invalid(self, form):
         print(form.errors)
@@ -28,27 +28,42 @@ class CreatePost(CreateView):
 class HomeFeed(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'data/feed.html'
-    context_object_name = 'posts'
-    success_url = 'home/'
+    
+    success_url = '/home/'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all()
+        return context
 
+
+# class SignUp(FormView):
+#     form_class = SignupForm
+#     template_name = 'registration/signup.html'
+#     success_url = reverse_lazy('data:login')
+    
+#     def create_profile(user,form):
+#         user = form.save()
+#         ProfileData.objects.create(user=user)
+#     def save_profile(user, form):
+#         user = form.save()
+#         if hasattr(user, 'profile'):
+#             user.profile.save()
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+from .forms import SignupForm
 
 class SignUp(FormView):
-    form_class = SignupForm
     template_name = 'registration/signup.html'
-    success_url = reverse_lazy('data:login')
-    
-    def create_profile(user,form):
-        user = form.save()
-        ProfileData.objects.create(user=user)
-    def save_profile(user, form):
-        user = form.save()
-        if hasattr(user, 'profile'):
-            user.profile.save()
+    form_class = SignupForm
+    success_url = '/login/'  # Replace with the appropriate success URL
 
+    def form_valid(self, form):
+        form.save()  # Save the form, which creates the user and profile
+        return super().form_valid(form)
         
 class LoginView(FormView):
     template_name = 'registration/login.html'
-    success_url = '/'
+    success_url = '/home/'
     form_class = LoginForm 
     
     def form_valid(self, form):

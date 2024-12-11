@@ -17,20 +17,26 @@
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        document.getElementById('file-upload').addEventListener('change', function(event) {
-    var file = event.target.files[0]; // Get the selected file
-    var reader = new FileReader(); // Create a new FileReader
-
+function previewImage() {
+  const fileInput = document.getElementById('image');
+  const file = fileInput.files[0];
+  const preview = document.getElementById('image-preview');
+  
+  // Check if a file is selected
+  if (file) {
+    const reader = new FileReader();
+    
+    // When the file is loaded, display the image
     reader.onload = function(e) {
-        var img = document.getElementById('image-preview'); // Get the image element
-        img.src = e.target.result; // Set the image source to the file's data URL
-        img.style.display = 'block'; // Show the image preview
-    };
-
-    if (file) {
-        reader.readAsDataURL(file); // Read the file as a Data URL (base64 encoded)
+      preview.src = e.target.result;
+      preview.style.display = 'block'; // Show the image
     }
-});
+    
+    reader.readAsDataURL(file); // Read the file as a data URL
+  } else {
+    preview.style.display = 'none'; // Hide if no file is selected
+  }
+}
     </script>
 </body>
 </html>

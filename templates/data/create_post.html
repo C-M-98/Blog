@@ -1,0 +1,39 @@
+{% extends 'data/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content1">
+    <nav class="navbar">
+        <h1>What Got Your Attention</h1>
+    </nav>
+    <!-- custom_form.html -->
+    <form method="post" action="{% url 'create_post' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- <div class="custom-form-field">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required class="custom-input" placeholder="Enter your name" class>
+    </div> -->
+
+        <div class="custom-form-field">
+            <div class="create_image1">
+                <!-- <label for="image">Image:</label> -->
+                <input type="file" name="image" id="image" required class="custom-input" style="display: none;">
+                <button type="button" class="custom-btn" onclick="document.getElementById('image').click();">Upload Image</button>
+            </div>
+        </div>
+            <br>
+            <br>
+            <br>
+        <div class="custom-form-field">
+            <label for="caption">Caption</label>
+            <textarea name="caption" id="message" required class="custom-textarea"
+                placeholder="Enter your message"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+{% include 'includes/nav.html' %}
+{% endblock %}

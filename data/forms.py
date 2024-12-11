@@ -16,25 +16,55 @@ class LoginForm(forms.Form):
     
         
         
-class SignupForm(forms.ModelForm):
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
-    class Meta:
-        model = User
-        fields = ['username', 'password', 'password2']
+# class SignupForm(forms.ModelForm):
+#     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
+#     class Meta:
+#         model = ProfileData
+#         fields = ['name', 'password']
      
+    
         
+    # def clean_password2(self):
+    #     password = self.cleaned_data.get('password')
+    #     password2 = self.cleaned_data.get('password2')
+    #     if password != password2:
+    #         raise forms.ValidationError("Passwords do not match")
+    #     return password2
+    # def save(self, commit=True):
+    #     user = super().save(commit=False)
+    #     user.set_password(self.cleaned_data['password'])
+    #     if commit:
+    #         user.save()
+    #     return user
+    
+class SignupForm(forms.ModelForm):
+    username = forms.CharField(max_length=150, required=True)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput, required=True)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput, required=True)
+
+    class Meta:
+        model = ProfileData
+        fields = ['name']  # Profile-specific fields
+
     def clean_password2(self):
         password = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password2')
-        if password != password2:
-            raise forms.ValidationError("Passwords do not match")
+        if password and password2 and password != password2:
+            raise forms.ValidationError("Passwords do not match.")
         return password2
+
     def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password'])
+        # Create the User instance
+        user = User.objects.create_user(
+            username=self.cleaned_data['username'],
+            password=self.cleaned_data['password']
+        )
+        # Create the ProfileData instance
+        profile = super().save(commit=False)
+        profile.user = user
         if commit:
-            user.save()
-        return user
+            profile.save()
+        return profile
 class ProfileUpdateForm(forms.Form):
     class Meta:
         model = ProfileData

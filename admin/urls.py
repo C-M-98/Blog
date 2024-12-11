@@ -30,6 +30,6 @@ urlpatterns = [
     path('', include(data_urls)),
     path('', include(profiles_urls)),
     path('create_post/', CreatePost.as_view(), name="create_post"),
-    path('', HomeFeed.as_view(), name="home"),
+    path('home/', HomeFeed.as_view(), name="home"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

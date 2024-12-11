@@ -1,12 +1,13 @@
-{% extends 'custom/base.html' %}
+{% extends 'data/base.html' %}
 {% load thumbnail %}
 {% load static %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'admin/style.css' %}">
 {% endblock %}
 {% block content %}
 
 <div class="content1">
+    {% include 'includes/nav.html' %}
     <nav class="navbar">
         <h1>Make It Personal</h1>
     </nav>
@@ -33,5 +34,5 @@ background-size:cover;">
     {% endfor %}
     
 </div>
-{% include 'includes/nav.html' %}
+
 {% endblock %}

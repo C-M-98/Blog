@@ -33,7 +33,7 @@ STATIC_URL = '/static/'
 
 # Directories where static files are stored (including custom 'static' directory)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "data/static/customcss"),  # Custom static directory (add your JS/CSS here)
+    os.path.join(BASE_DIR, "static/admin"),  # Custom static directory (add your JS/CSS here)
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # WhiteNoise settings for serving static files in production
