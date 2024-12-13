@@ -28,7 +28,7 @@ background-size:cover;">
         {% endif %}
         <div class="feed-pro-container">
             <a href="{% url 'profiles:detail' pk=post.pk %}">
-                {% if post.user.profile.image %}
+                {% if post.author.profile.image %}
                 <img src="{{ post.user.profile.image.url }}" class="rounded-circle feed-pro">
                 {% else %}
                 <div class="empty-placeholder feed-pro rounded-circle"></div>
@@ -36,7 +36,7 @@ background-size:cover;">
             </a>
         </div>
     </div>
-    <p class="card-text border-0 ">{{post.caption}} ~ {{user.username}}</p>
+    <p class="card-text border-0 ">{{post.caption}} ~ {{author.username}}</p>
     {% endfor %}
     
 </div>

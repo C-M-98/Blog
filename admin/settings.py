@@ -25,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
 # Specify the directory where static files will be stored during development
 import os
 
@@ -192,5 +193,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         },
 #     },
 # }
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['blog-mr6x.onrender.com','localhost','127.0.0.1']

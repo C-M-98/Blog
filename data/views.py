@@ -28,26 +28,12 @@ class CreatePost(CreateView):
 class HomeFeed(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'data/feed.html'
-    
+    context_object_name = 'posts'
     success_url = '/home/'
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.all()
-        return context
 
-
-# class SignUp(FormView):
-#     form_class = SignupForm
-#     template_name = 'registration/signup.html'
-#     success_url = reverse_lazy('data:login')
-    
-#     def create_profile(user,form):
-#         user = form.save()
-#         ProfileData.objects.create(user=user)
-#     def save_profile(user, form):
-#         user = form.save()
-#         if hasattr(user, 'profile'):
-#             user.profile.save()
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from .forms import SignupForm
@@ -58,9 +44,13 @@ class SignUp(FormView):
     success_url = '/login/'  # Replace with the appropriate success URL
 
     def form_valid(self, form):
-        form.save()  # Save the form, which creates the user and profile
+        user =form.save()
+        print(f'User created ={user.username}')
         return super().form_valid(form)
-        
+    
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form);
 class LoginView(FormView):
     template_name = 'registration/login.html'
     success_url = '/home/'
@@ -76,15 +66,5 @@ class LoginView(FormView):
             login(self.request, user) 
         return redirect(self.success_url)  # Log the user  # Redirect to success_url
 
-
-    
-class CreatePost(FormView):
-    form_class = PostForm
-    template_name = 'data/create_post.html'
-    success_url = '/home/'
-    
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
     
         

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['name','image', 'caption']
+        fields = ['image', 'caption']
  
         
 class LoginForm(forms.Form):
@@ -36,15 +36,16 @@ class LoginForm(forms.Form):
     #     if commit:
     #         user.save()
     #     return user
-    
-class SignupForm(forms.ModelForm):
-    username = forms.CharField(max_length=150, required=True)
-    password = forms.CharField(label='Password', widget=forms.PasswordInput, required=True)
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput, required=True)
 
+from django import forms
+from .models import ProfileData
+
+class SignupForm(forms.ModelForm):
+    name=forms.CharField(max_length=100)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
     class Meta:
-        model = ProfileData
-        fields = ['name']  # Profile-specific fields
+        model = User
+        fields = ['username', 'password', 'password2', 'name']
 
     def clean_password2(self):
         password = self.cleaned_data.get('password')
@@ -52,19 +53,13 @@ class SignupForm(forms.ModelForm):
         if password and password2 and password != password2:
             raise forms.ValidationError("Passwords do not match.")
         return password2
-
     def save(self, commit=True):
-        # Create the User instance
-        user = User.objects.create_user(
-            username=self.cleaned_data['username'],
-            password=self.cleaned_data['password']
-        )
-        # Create the ProfileData instance
-        profile = super().save(commit=False)
-        profile.user = user
+        user = super().save(commit=False)
         if commit:
+            user.save()
+            profile = ProfileData(user=user, name=self.cleaned_data['name'])
             profile.save()
-        return profile
+        return user
 class ProfileUpdateForm(forms.Form):
     class Meta:
         model = ProfileData

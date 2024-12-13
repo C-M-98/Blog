@@ -1,45 +1,36 @@
-{% extends "registration/base.html" %}
-{% load i18n static %}
+{% extends "data/base.html" %}
+{% load static %}
 {% block content %}
-<!-- <form method="POST" action="{% url 'data:signup' %}">
-  {% csrf_token %}
-  <label for="id_username">Username:</label>
-  <input type="text" name="username" id="id_username" required>
-  <br>
-  <label for="id_password">Password:</label>
-  <input type="password" name="password" id="id_password" required>
-  <br>
-  <label for="id_password2">Re-enter Password:</label>
-  <input type="password" name="password2" id="id_password2" required>
-  <br>
-  <input type="submit" value="Sign Up">
-</form>
-
-<br>
-<a href="{% url 'data:login' %}"><button type="button">Login</button></a> -->
-
-<form method="POST" action="{% url 'data:signup' %}">
-  {% csrf_token %}
-  <label for="id_username">Username:</label>
-  {{ form.username }}
-  <br>
-  <label for="id_password">Password:</label>
-  {{ form.password }}
-  <br>
-  <label for="id_password2">Re-enter Password:</label>
-  {{ form.password2 }}
-  <br>
-  <label for="id_name">Name:</label>
-  {{ form.name }}
-  <br>
-  <input type="submit" value="Sign Up">
-</form> 
-  
-    <!-- <h2>Sign up</h2>
-    <form method="post" action="{% url 'data:login' %}">
-      {% csrf_token %}
-      {{ form.as_p }}  <!-- Render form fields as paragraph elements -->
-      <!-- <button type="submit">Sign up</button>
-    </form>
-    <p>Already have an account? <a href="{% url 'data:login' %}">Login here</a></p> --> -->
-  {% endblock %}
+<div class="content1">
+   <div class="signup-form11">
+      <div class="animated-image">
+         <img src="{% static 'images/Animation.gif' %}" style="width:200px; height:200px;" id="svg-image" class="hidden">
+      </div>
+   <div class="signup-form1">
+<form method="POST" action="{% url 'data:signup' %}" class="signup-form" id="signup-form">
+   {% csrf_token %} 
+   <div class="form1"> 
+    <label for="id_username" class="label1">Username:</label> 
+    <br>
+    <input type="text" name="username" maxlength="30" required id="id_username" class="form11">
+  </div>
+  <div class="form1"> 
+   <label for="id_username" class="label1">Name:</label> 
+   <br>
+   <input type="text" name="name" maxlength="30" required id="id_username" class="form11">
+ </div>
+     <div class="form1">
+       <label for="id_password" class="label1">Password:</label>
+       <br>
+       <input type="password" name="password" required id="id_password" class="form11">
+       </div> 
+       <div class="form1"> 
+      <label for="id_password2" class="label1">Confirm Password:</label> 
+      <br>
+       <input type="password" name="password2" required id="id_password2" class="form11"> 
+      </div>
+   <button type="submit" class="btn btn-primary signBtN" style="background-color:rgb(69, 69, 232) ;" id="signup-button">Sign Up</button>
+</div>
+</div>
+</div>
+{% endblock %}

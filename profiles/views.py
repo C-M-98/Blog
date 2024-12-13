@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from data.models import ProfileData
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic.list import ListView
@@ -40,17 +40,14 @@ class ProfileDetail(DetailView):
     def get_object(self, queryset=None):
         return ProfileData.objects.get(user__pk=self.kwargs['pk'])
     
-# class ProfileUpdateView(LoginRequiredMixin, UpdateView):
-#     model = ProfileData
-#     form_class = ProfileUpdateForm
-#     template_name = 'profiles/profile.html'
-#     context_object_name = 'profile'
-    
-#     def get_object(self, queryset=None):
-#         return ProfileData.objects.get(user=self.request.user)
-    
-#     def get_success_url(self):
-#         return reverse_lazy('profile')
+class ProfileUpdateView(LoginRequiredMixin, CreateView):
+    model = ProfileData
+    template_name = 'profiles/profile.html'
+    context_object_name = 'profile'
+    success_url = reverse_lazy('profile')
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 
