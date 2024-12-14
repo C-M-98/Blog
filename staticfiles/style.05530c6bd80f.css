@@ -95,7 +95,7 @@ html {
   /* overflow:hidden; */
   background: rgb(1, 0, 15);
   background: linear-gradient(rgba(0, 0, 0, 0.2),
-   rgba(0, 0, 0, 0.2)), url('images/pexels.jpg');
+   rgba(0, 0, 0, 0.2)), url("images/pexels.ca935588e921.jpg");
   background-size: cover;
 }
 .feed-post {
