@@ -12,7 +12,7 @@
       <div class="animated-image">
          <img src="{% static 'images/pattern-15508.gif' %}" style="width:100px; height:100px;" id="svg-image" class="hidden">
       </div>
-<form method="POST" action="{% url 'data:signup' %}" class="signup-form" id="signup-form">
+<form method="POST" action="{% url 'data:signup' %}" class="signup-form" id="signup-form" style="height:auto;">
    {% csrf_token %} 
    <div class="white-box">
    <div class="form1"> 
@@ -35,7 +35,7 @@
       <br>
        <input type="password" name="password2" required id="id_password2" class="form11"> 
       </div>
-   <button type="submit" class="btn btn-primary signBtN" style="background-color:#363636 ; border:none" id="signup-button">Sign Up</button>
+   <button type="submit" class="btn btn-primary signBtn" style="background-color:#363636 ; border:none" id="signup-button">Sign Up</button>
    </div>
 </div>
 </div>

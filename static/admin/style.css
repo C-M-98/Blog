@@ -8,8 +8,11 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column;
+  /* overflow: hidden; */
 }
+.signBtn:cl{
 
+}
 .container-preview {
   width: 100%;
   height: 350px;
@@ -87,15 +90,16 @@ html {
 }
 
 .content1 {
-  position: relative;
+  position: absolute;
   text-align: center;
-  height: auto;
+  height: 100vh;
   min-height: 100%;
   width: 100%;
-  overflow-y: scroll;
+  /* overflow:hidden; */
   background: rgb(1, 0, 15);
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/pexels.jpg');
   background-size: cover;
+  touch-action: none;
 }
 .feed-post {
   position: relative;
@@ -161,10 +165,11 @@ html {
   text-align: center;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .signup-form1 {
   position: relative;
-  height: 400px;
+  height: 200px;
   margin: auto;
   width: 60%;
   text-align: center;
@@ -175,6 +180,7 @@ html {
   position: relative;
   margin:auto;
   text-align:center;
+  height:100px;
 
 }
 .animated-image {
@@ -197,46 +203,8 @@ html {
   text-align:center;
 
 }
-/* @keyframes hopRotate {
-  0% {
-    transform: translateY(0px);
-  }
-  10% {
-    transform: translateY(5px) ;
-  }
-
-  20%{
-    transform:translateY(-10px) rotate(0deg);
-  }
-  70% {
-    transform: translateY(0px)rotate(360deg) ;
-  }
-  100% {
-    transform: translateY(0px) rotate(360deg) ;
-  }
-} */
 
 
-/* .animated-image::after {
-  content: "";
-  position: absolute;
-  bottom: -50px;
-  height: 50px;
-  left: 45%;
-  width: 50px;
-  transform: shadow hop(-50%);
-
-  /* animation: shadow-hop 2s infinite; */
-/* } */
-/* @keyframes shadow-hop {
-  0%,
-  100% {
-    transform: translateX(-50%, 0) rotateZ(10px);
-  }
-  50% {
-    transform: translateX(-50%, 10px) rotateZ(10px);
-  }
-}  */
 .signup-form {
   position: absolute;
   height: 400px;
@@ -259,7 +227,7 @@ html {
   background-color: black;
   background:linear-gradient(90deg,rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   position: relative;
-  border-radius:5px;
+  border-radius:10px;
  
 }
 .phrase{
@@ -284,9 +252,11 @@ html {
   color:black;
   background-color: white;
   width: 90%;
+  height:100vh;
   border-radius: 5px;
   padding:5px;
   border: none;
+  overflow: hidden;
 }
 .form11:focus {
   border: none;
