@@ -2,13 +2,19 @@
 {% load static %}
 {% block content %}
 <div class="content1">
+
    <div class="signup-form11">
-      <div class="animated-image">
-         <img src="{% static 'images/Animation.gif' %}" style="width:200px; height:200px;" id="svg-image" class="hidden">
+      <div class="phrase">
+         <p>“Join our community of storytellers—share your voice, inspire others, and start your blogging journey today!”</p>
       </div>
+   
    <div class="signup-form1">
+      <div class="animated-image">
+         <img src="{% static 'images/pattern-15508.gif' %}" style="width:100px; height:100px;" id="svg-image" class="hidden">
+      </div>
 <form method="POST" action="{% url 'data:signup' %}" class="signup-form" id="signup-form">
    {% csrf_token %} 
+   <div class="white-box">
    <div class="form1"> 
     <label for="id_username" class="label1">Username:</label> 
     <br>
@@ -29,7 +35,8 @@
       <br>
        <input type="password" name="password2" required id="id_password2" class="form11"> 
       </div>
-   <button type="submit" class="btn btn-primary signBtN" style="background-color:rgb(69, 69, 232) ;" id="signup-button">Sign Up</button>
+   <button type="submit" class="btn btn-primary signBtN" style="background-color:#363636 ; border:none" id="signup-button">Sign Up</button>
+   </div>
 </div>
 </div>
 </div>
